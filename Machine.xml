@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<StateMachine>
+    <transitonTable>
+        <item>Final</item>
+        <item>Final</item>
+        <item>Error</item>
+    </transitonTable>
+    <transitonTable>
+        <item>Initial</item>
+        <item>Error</item>
+        <item>Error</item>
+    </transitonTable>
+    <transitonTable>
+        <item>Error</item>
+        <item>Error</item>
+        <item>Error</item>
+    </transitonTable>
+    <outputAlphabet>
+        <item>A</item>
+        <item>A</item>
+    </outputAlphabet>
+    <outputAlphabet>
+        <item>A</item>
+        <item>A</item>
+    </outputAlphabet>
+    <outputAlphabet>
+        <item>A</item>
+        <item>A</item>
+    </outputAlphabet><state>Initial</state><state>Final</state><state>Error</state><state>STATE0</state><state>STATE1</state><state>STATE2</state><state>STATE3</state><state>STATE4</state><inputSymbol>a</inputSymbol><inputSymbol>b</inputSymbol><inputSymbol>c</inputSymbol><output>A</output><output>B</output>
+    <output>C</output>
+    <output>D</output>
+    <output>E</output>
+    <output>F</output>
+    <output>G</output>
+    <output>H</output>
+</StateMachine>

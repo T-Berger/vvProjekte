@@ -23,17 +23,4 @@ public enum State {
         this.currentState = currentState;
     }
     public int getCurrentState(){ return currentState;}
-
-
-    @XmlElement
-    static State transitonTable [][] = {
-            //       transInit       transFinal       transError
-            {
-                    Final,  Final,    Error   //  Initial
-            }, {
-                    Initial,    Error,  Error // Final
-            }, {
-                    Error,    Error,    Error // Error
-            }
-    };
 }

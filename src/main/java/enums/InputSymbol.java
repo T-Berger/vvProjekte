@@ -1,10 +1,12 @@
 package enums;
 
 import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name="inputSymbol")
 @XmlEnum
+@XmlRootElement(name = "InputSymbol")
 public enum InputSymbol {
     a(0),b(1),c(2);
     private final int currentInputSymbol;
@@ -32,4 +34,6 @@ public enum InputSymbol {
     public void setPreviousInputSymbol(InputSymbol previousInputSymbol) {
         this.previousInputSymbol = previousInputSymbol;
     }
+
+
 }
