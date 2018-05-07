@@ -6,7 +6,7 @@
 //
 //public class MealyThread implements Runnable {
 //
-//    JsonToXmlMealyMachine workingConverterMachine = new JsonToXmlMealyMachine();
+//    MealyMachine workingConverterMachine = new MealyMachine();
 //
 //
 //    private BlockingQueue inputQueue;

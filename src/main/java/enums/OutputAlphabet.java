@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.*;
 public enum OutputAlphabet {
     A,B,C,D,E,F,G,H;
     public String printOutput (){
-            return this.toString();
+        return this.toString();
         }
 
     @XmlElement(name="outputTable")

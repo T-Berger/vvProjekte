@@ -9,14 +9,8 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 public class MachineSerialization {
-    public static void main(String[] args) throws JAXBException {
-
+    public static void marshaller() throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(Machine.class);
-
-
-
-
-
 
         Marshaller marshaller = context.createMarshaller();
         marshaller.marshal(new Machine(), new File("Machine.xml"));
@@ -27,6 +21,12 @@ public class MachineSerialization {
 
         System.out.println(root +"ENDE");
         System.out.println(root.transitonTable);
+    }
+    public static void unmarshaller(){
+
+    }
+    public static void main(String[] args) throws JAXBException {
+
     }
 
 }

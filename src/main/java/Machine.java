@@ -1,13 +1,12 @@
-import enums.InputSymbol;
-import enums.OutputAlphabet;
-import enums.State;
-import enums.Table;
+import enums.*;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 
 
 @XmlRootElement(name = "StateMachine")
@@ -20,8 +19,9 @@ public class Machine {
 //    OutputAlphabet output;
 //     State[] state= new State[];
     ArrayList<State> state = new ArrayList<State>();
-    ArrayList<InputSymbol> inputSymbol = new ArrayList<InputSymbol>();
+    HashSet<InputSymbol> inputSymbol = new HashSet<>();
     ArrayList<OutputAlphabet> output = new ArrayList<OutputAlphabet>();
+    ArrayList<OutputAlphabet> transitionSymbols = new ArrayList<>();
     Machine(){
 ////        this.state = state;
 //        this.output = output;
@@ -34,13 +34,14 @@ public class Machine {
             System.out.println(s);
             state.add(s);
         }
-        for (InputSymbol s:
-                InputSymbol.values()) {
-            inputSymbol.add(s);
-        }
+//        for (InputSymbol s:
+//                InputSymbol.values()) {
+//            inputSymbol.add(s);
+//        }
+        transitionSymbols.addAll(Arrays.asList(OutputAlphabet.values()));
         for (OutputAlphabet out:
              OutputAlphabet.values()) {
-            output.add(out);
+           // transitionSymbols.add(new Symbol(out));
         }
     }
 }

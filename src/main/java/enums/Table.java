@@ -2,6 +2,8 @@ package enums;
 
 
 import javax.xml.bind.annotation.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,16 +16,21 @@ public class Table {
             {OutputAlphabet.A,OutputAlphabet.A}
     };
     @XmlElement(name="transitonTable")
-    public static State transitonTable [][] = {
-            //       transInit       transFinal       transError
-            {
-                    State.Final,  State.Final,    State.Error   //  Initial
-            }, {
-                    State.Initial,    State.Error,  State.Error // Final
-            }, {
-                    State.Error,    State.Error,    State.Error // Error
+    public static State transitonTable [][] = new State[Alphabet.values().length][State.stateLength];
+//    public static State transitonTable [][] = {
+//            //       transInit       transFinal       transError
+//            {
+//                    State.Final,  State.Final,    State.Error   //  Initial
+//            }, {
+//            State.Initial,    State.Error,  State.Error // Final
+//    }, {
+//            State.Error,    State.Error,    State.Error // Error
+//    }
+//    };
+    static {
+    Arrays.fill(transitonTable, State.Error);
     }
-    };
+
     Table(){
        out = OutputAlphabet.values();
     }
