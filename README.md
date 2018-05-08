@@ -53,6 +53,6 @@ Nachteile
 
 ### Weitere Informationen zum Repo 
 
-Der Ordner deprecated ist nicht genutzter und veralteter Code.
-Der Ordner xmlGenerator ist eine nicht vollständige Implemtierung eine XJC SchemasGenerators
-Der BlockingQueue Thread erzeugt eine 2 Ausgabedatei- die erste wir schon im MealyThread erzeugt-. Somit ist der BlockingThread sinnlos und ist nur implemtiert da es in der Aufgabenstellung verlangt ist. 
+* Der Ordner deprecated ist nicht genutzter und veralteter Code.
+* Der Ordner xmlGenerator ist eine nicht vollständige Implemtierung eine XJC SchemasGenerators
+* Der BlockingQueue Thread erzeugt eine 2 Ausgabedatei- die erste wir schon im MealyThread erzeugt-. Somit ist der BlockingThread sinnlos und ist nur implemtiert da es in der Aufgabenstellung verlangt ist. 
