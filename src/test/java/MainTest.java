@@ -77,8 +77,8 @@ public class MainTest {
 //        String outString = sb.toString();
 //        assertEquals("B",outString);
 //    }
-    @After
-    public void tearDown() throws Exception {
+    @AfterClass
+    public static void tearDown() throws Exception {
         new File("./output/AA.out").delete();
         new File("./output/AAA.out").delete();
 //                c.delete();
