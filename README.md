@@ -26,13 +26,18 @@ In den \<transitionSymbols\>*\</transitionSymbols\> kann die Wertigkeit der Inpu
 ### Ändern des Alphabets
 Das Ändern des Alphabets ist durch XJC möglich.
 durch hinzu fügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
-ALPHABET_VALUE = Platzhbalter für neuen Enum Eintrag  
-Dafür muss dieser Befehl verwenden werden
-    "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
 
+ALPHABET_VALUE = Platzhbalter für neuen Enum Eintrag  
+
+Dafür muss dieser Befehl verwenden werden
+
+    "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
+    
 Um eine neue default Config zu erstellen muss in der MealyMachine diese Zeilen
+
     transitonTable = Table.transitonTable;
     alphabetOut = Table.alphabetOut;
+    
 auskommentiert werden. Danach muss entweder MachineSerilization.main oder MachineSerilization.marshaller ausgeführt werden.
 
 ### Warum wurden enums verwendet
