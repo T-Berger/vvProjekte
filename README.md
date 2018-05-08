@@ -10,7 +10,7 @@ Dies ist eine funktionierende MealyMachine.
 - [x] Ordner Überwachung
 - [x] Threadskommunikation
 
-    die Aufgaben wurden vollständig erfüllt. In den Test Klassen findet man einen Abnahmetest.
+die Aufgaben wurden vollständig erfüllt. In den Test Klassen findet man einen Abnahmetest, welcher eine einfache Mealy Machine erzeugt und mit Dummy Daten füttert.
 
 Es ist möglich die Default Konfiguration zu ändern.
 Diese findet man in xml Verzeichnis mit den Titel Machine.xml.
