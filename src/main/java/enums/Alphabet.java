@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement
 @XmlEnum
 public enum Alphabet {
-    A,B,C,D,E,F,G,H,z,ERROR;
+    V,A,B,C,D,E,F,G,H,z,ERROR;
     public String printOutput (){
         return this.toString();
         }

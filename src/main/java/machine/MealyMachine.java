@@ -7,10 +7,7 @@ import enums.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -26,16 +23,16 @@ import java.util.concurrent.BlockingQueue;
 @XmlAccessorType(XmlAccessType.FIELD)
 class MealyMachine {
     State transitonTable[][] = {};
-    private Alphabet[][] alphabetOut = {};
+    public Alphabet[][] alphabetOut = {};
     //    private ArrayList<State> state = new ArrayList<State>();
     /**
      * Here is the Alphabet of the Symbols saved */
     private ArrayList<Alphabet> transitionSymbols = new ArrayList<>();
 
     MealyMachine() {
-//        // Needed for the basic Machine.xml File
-//        transitonTable = Table.transitonTable;
-//        alphabetOut = Table.alphabetOut;
+////        // Needed for the basic Machine.xml File
+        transitonTable = Table.transitonTable;
+        alphabetOut = Table.alphabetOut;
         System.out.println(Arrays.toString(State.values()));
         /*
           Here is the Alphabet of the Symbol generated
@@ -64,26 +61,6 @@ class MealyMachine {
             System.out.println("This machine will now close itself, and suspend further actions");
         }
         return next;
-    }
-
-    /**
-     * Function for the Output
-     * @see Table
-     * @param filepath   for the output File
-     * @param inputValue Index from the read EnumAlphabet
-     * @param stateValue Index from the current EnumConstructorState
-     */
-    private void output(File filepath, int inputValue, int stateValue) throws IOException {
-        FileWriter ofstream = new FileWriter(filepath);
-        try (BufferedWriter out = new BufferedWriter(ofstream)) {
-            out.write(
-                    alphabetOut[inputValue][stateValue].toString()
-            );
-        }catch (IllegalArgumentException s) {
-            throw new RuntimeException(s +
-                    "This entry in the Alphabet Table [" + inputValue + "][" + stateValue + "] is written wrong, " +
-                    "and therefore not a valid State.  Accepted  State are" + Arrays.asList(State.values()));
-        }
     }
     /**
      * Function for the Output
@@ -115,13 +92,14 @@ class MealyMachine {
                 .replace("./json/", "./output/").replace(".msg", ".out");
 
         String data = outputPath.replace("./output/", "").replace(".out", "");
-
+//        System.out.println(alphabetOut[1].length);
         State current = State.Initial;
-
+        String output="";
         File outputFile = new File(outputPath);
         // Mealy Machine process
         // Get the new Input
         // Each character in the filename is a input
+        System.out.println("data -->>> " + data);
         for (char input :
                 data.toCharArray()) {
             try {
@@ -130,15 +108,12 @@ class MealyMachine {
 
                 Alphabet search = Alphabet.valueOf(String.valueOf(input));
                 transitionSymbols.indexOf(search);
-                output(outputFile, transitionSymbols.indexOf(search), current.getCurrentState());
-                // Not needed
-                blockingQueue.add(outputFile);
-                blockingQueue.add(outputBlockingQueu(transitionSymbols.indexOf(search), current.getCurrentState()));
-
+                output = output.concat(outputBlockingQueu(transitionSymbols.indexOf(search), current.getCurrentState()));
+                System.out.println("INDEX -> "+ transitionSymbols.indexOf(search));
                 // Transition into new State
                 current = transitionMachine(transitionSymbols.indexOf(search), current.getCurrentState());
                 // Break if in a illegal State
-                if(current != State.Error) break;
+                if(current == State.Error) break;
             } catch (IllegalArgumentException e) {
                 //e.printStackTrace();
                 throw new RuntimeException(e +
@@ -146,7 +121,11 @@ class MealyMachine {
             }
 
         }
+        System.out.println("Ausgabe --> "+ output);
+        blockingQueue.add(outputFile);
+        blockingQueue.add(output);
         System.out.println("Process finished");
+
         Files.delete(Paths.get(pathOfJsonFile));
     }
 

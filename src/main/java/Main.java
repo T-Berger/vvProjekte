@@ -15,7 +15,7 @@ public class Main {
         InputFileWatcher directoryFileWatcherOnInput = new InputFileWatcher(inputBlockingQueue);
         WriteOutputBlockingQueue blockQueueing = new WriteOutputBlockingQueue(outputBlockingQueue);
 
-        MealyThread mealyThread = new MealyThread(inputBlockingQueue, outputBlockingQueue, "Machine");
+        MealyThread mealyThread = new MealyThread(inputBlockingQueue, outputBlockingQueue, "MachineTEST");
         new Thread(directoryFileWatcherOnInput).start();
         new Thread(mealyThread).start();
         new Thread(blockQueueing).start();

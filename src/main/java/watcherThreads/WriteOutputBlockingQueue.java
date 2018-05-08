@@ -16,11 +16,11 @@ public class WriteOutputBlockingQueue implements Runnable  {
         while(true) {
             // System.out.println(outputQueue);
             try {
-                String filepath = (String) outputQueue.take();
-                String output = (String) outputQueue.take();
-                FileWriter ofstream = new FileWriter(filepath + ".blocking");
+                Object filepath =  outputQueue.take();
+                Object output = outputQueue.take();
+                FileWriter ofstream = new FileWriter(filepath.toString());
                 try (BufferedWriter out = new BufferedWriter(ofstream)) {
-                    out.write( output );
+                    out.write( output.toString() );
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
