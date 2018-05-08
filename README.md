@@ -1,6 +1,6 @@
 # MealyMachine
 
-Dies ist eine funktionierende MealyMachine.
+Dies ist eine funktionierende MealyMachine. 
 
 ### Aufgaben
 - [x] Zustände
@@ -22,23 +22,27 @@ Alles was zwischen \<transitonTable\> * \</transitonTable\> sowie zischen Item T
 
 Ausgabetabelle:
 Alles was zwischen \<alphabet\> * \</alphabet\> sowie zischen Item Tags \<item\> \</item\>  kann mit Anderen Enum Alphabet Values geändert werden.
-In den \<transitionSymbols\>*\</transitionSymbols\> kann die Wertigkeit der Inputsymbole verändert werden   
-### Ändern des Alphabets
-Das Ändern des Alphabets ist durch XJC möglich.
-durch hinzu fügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
 
-ALPHABET_VALUE = Platzhbalter für neuen Enum Eintrag  
 
-Dafür muss dieser Befehl verwenden werden
+In den \<transitionSymbols\>*\</transitionSymbols\> kann die Wertigkeit der Inputsymbole verändert werden  
 
-    "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
-    
 Um eine neue default Config zu erstellen muss in der MealyMachine diese Zeilen
 
     transitonTable = Table.transitonTable;
     alphabetOut = Table.alphabetOut;
     
-auskommentiert werden. Danach muss entweder MachineSerilization.main oder MachineSerilization.marshaller ausgeführt werden.
+auskommentiert werden. Danach muss entweder MachineSerilization.main oder MachineSerilization.marshaller ausgeführt werden
+### Ändern des Alphabets
+Das Ändern des Alphabets ist durch XJC möglich.
+durch hinzu fügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
+
+ALPHABET_VALUE = Platzhalter für neuen Enum Eintrag  
+
+Dafür muss dieser Befehl verwenden werden
+
+    "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
+    
+.
 
 ### Warum wurden enums verwendet
 Vorteile
@@ -54,5 +58,5 @@ Nachteile
 ### Weitere Informationen zum Repo 
 
 * Der Ordner deprecated ist nicht genutzter und veralteter Code.
-* Der Ordner xmlGenerator ist eine nicht vollständige Implemtierung eine XJC SchemasGenerators
-* Der BlockingQueue Thread erzeugt eine 2 Ausgabedatei- die erste wir schon im MealyThread erzeugt-. Somit ist der BlockingThread sinnlos und ist nur implemtiert da es in der Aufgabenstellung verlangt ist. 
+* Der Ordner xmlGenerator ist eine nicht vollständige Implemtierung eines XJC SchemasGenerators
+* Der BlockingQueue Thread erzeugt eine zweite Ausgabedatei- die erste wir schon in der MealyMachine erzeugt-. Somit ist der BlockingThread sinnlos und ist nur implemtiert da es in der Aufgabenstellung verlangt ist. 
