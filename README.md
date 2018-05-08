@@ -3,12 +3,12 @@
 Dies ist eine funktionierende MealyMachine.
 
 ### Aufgaben
-[-] Zustände
-[-] Eingabealphabet identisch mit Ausgabealphabet
-[-] Zustandsübergabefunktion und Ausgabefunktion mit Tabellen
-[-] Laden der Maschine aus Xml
-[-] Ordner Überwachung
-[-] Threads
+- [x] Zustände
+- [x] Eingabealphabet identisch mit Ausgabealphabet
+- [x] Zustandsübergabefunktion und Ausgabefunktion mit Tabellen
+- [x] Laden der Maschine aus Xml
+- [x] Ordner Überwachung
+- [x] Threadskommunikation
 
 die Aufgaben wurden vollständig erfüllt
 
@@ -34,6 +34,7 @@ Vorteile
 * keine Reflextion während der Laufzeit
 * Klar definierte Zustände
 * Klar definierte Input/ Ouputsymbole
+
 Nachteile
 * umständliche Xml Serilization
 * schwer erweiterbar 
