@@ -34,7 +34,7 @@ Um eine neue default Config zu erstellen muss in der MealyMachine diese Zeilen
 auskommentiert werden. Danach muss entweder MachineSerilization.main oder MachineSerilization.marshaller ausgeführt werden
 ### Ändern des Alphabets
 Das Ändern des Alphabets ist durch XJC möglich.
-durch hinzu fügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
+durch hinzufügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
 
 ALPHABET_VALUE = Platzhalter für neuen Enum Eintrag  
 
