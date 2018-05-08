@@ -30,6 +30,10 @@ ALPHABET_VALUE = Platzhbalter für neuen Enum Eintrag
 Dafür muss dieser Befehl verwenden werden
     "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
 
+Um eine neue default Config zu erstellen muss in der MealyMachine diese Zeilen
+    transitonTable = Table.transitonTable;
+    alphabetOut = Table.alphabetOut;
+auskommentiert werden. Danach muss entweder MachineSerilization.main oder MachineSerilization.marshaller ausgeführt werden.
 
 ### Warum wurden enums verwendet
 Vorteile
