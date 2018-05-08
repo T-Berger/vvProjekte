@@ -1,4 +1,7 @@
-package enums;
+package enums.enumsSerialization;
+
+import deprecated.InputSymbol;
+import enums.Alphabet;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -8,7 +11,7 @@ import java.io.File;
 public class SerializationOutputAlphabet {
     public static void main(String[] args) throws JAXBException {
 
-        JAXBContext context = JAXBContext.newInstance(OutputAlphabet.class);
+        JAXBContext context = JAXBContext.newInstance(Alphabet.class);
         Marshaller marshaller = context.createMarshaller();
         for (InputSymbol symbol:
                 InputSymbol.values()) {

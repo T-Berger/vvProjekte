@@ -2,70 +2,40 @@ package enums;
 
 
 import javax.xml.bind.annotation.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+/**
+ * Here you find the Arrays for the transition and output*/
 public class Table {
-
+    /**
+     * Array Alphabet[][] alphabetOut is the table for the output
+     * First Index value of the Alphabet entry
+     * Second Index value of the next State
+     * Returns a OutputSymbol - Alphabet Enum Value- */
     @XmlElement(name="outputTable")
-    public static OutputAlphabet[][] outputAlphabet={
-            {OutputAlphabet.A,OutputAlphabet.A},
-            {OutputAlphabet.A,OutputAlphabet.A},
-            {OutputAlphabet.A,OutputAlphabet.A}
-    };
+    public static Alphabet[][] alphabetOut = new Alphabet[Alphabet.values().length][State.stateLength];
+//    public static Alphabet[][] alphabetOut={
+//
+//
+//            {Alphabet.A,Alphabet.A},
+//            {Alphabet.A,Alphabet.A},
+//            {Alphabet.A,Alphabet.A}
+//    };
+    /**
+     * Array State[][] transitonTable  is the table for the transitions
+     * First Index value of the Alphabet entry
+     * Second Index value of the next State
+     * Returns the next State Enum Value */
     @XmlElement(name="transitonTable")
     public static State transitonTable [][] = new State[Alphabet.values().length][State.stateLength];
-//    public static State transitonTable [][] = {
-//            //       transInit       transFinal       transError
-//            {
-//                    State.Final,  State.Final,    State.Error   //  Initial
-//            }, {
-//            State.Initial,    State.Error,  State.Error // Final
-//    }, {
-//            State.Error,    State.Error,    State.Error // Error
-//    }
-//    };
+    /**
+     * This static initializer fills both Tables with the basic configuration */
     static {
-    Arrays.fill(transitonTable, State.Error);
-    }
-
-    Table(){
-       out = OutputAlphabet.values();
-    }
-    @XmlElement
-    private OutputAlphabet[] out;
-    @XmlEnum
-    enum card{
-        @XmlEnumValue("Pike")
-        pike,@XmlEnumValue("ass")ass,@XmlEnumValue("heart")heart;
-    }
-
-    @XmlEnum(String.class)
-    public enum Cards { CLUBS, DIAMONDS, HEARTS, SPADES }
-    @XmlEnum
-    public enum MyEnum {
-
-        MY_ENUM_1,
-        MY_ENUM_2;
-
-        public String value() {
-            return name();
+    for (int i=0; i < transitonTable.length; i++){
+        Arrays.fill(transitonTable[i], State.Error);
+        Arrays.fill(alphabetOut[i], Alphabet.ERROR);
         }
-
-        public static MyEnum fromValue(String v) {
-            return valueOf(v);
-        }
-
     }
 }
-
-//            //       transInit       transFinal       transError
-//            {
-//                    State.Final,  State.Final,    State.Error   //  Initial
-//            }, {
-//                    State.Initial,    State.Error,  State.Error // Final
-//            }, {
-//                    State.Error,    State.Error,    State.Error // Error
-//    }

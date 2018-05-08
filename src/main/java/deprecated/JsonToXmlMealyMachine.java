@@ -87,7 +87,7 @@
 //
 //    };
 //    @XmlElement
-//    static OutputAlphabet outputAlphabet[][];
+//    static OutputAlphabet alphabetOut[][];
 //
 //    /**@param symbolValue Index from the current EnumConstructorSymbol
 //     * @param stateValue Index from the current EnumConstructorState
@@ -121,7 +121,7 @@
 //        FileWriter ofstream = new FileWriter(filepath);
 //        try (BufferedWriter out = new BufferedWriter(ofstream)) {
 //            out.write(
-//                    outputAlphabet[inputValue][stateValue].toString()
+//                    alphabetOut[inputValue][stateValue].toString()
 //            );
 //        }
 //    }

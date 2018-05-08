@@ -1,4 +1,6 @@
-package enums;
+package enums.enumsSerialization;
+
+import enums.State;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

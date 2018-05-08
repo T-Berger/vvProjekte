@@ -4,6 +4,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlEnum;
+/**
+ * These Enum Entrys are the possible States of the FSM*/
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlEnum
 public enum State {
@@ -14,11 +16,9 @@ public enum State {
     STATE1 (4),
     STATE2 (5),
     STATE3 (6),
-    STATE4 (7);    ;
+    STATE4 (7);
     static public final Integer stateLength = State.values().length;
-
     private int currentState;
-
     State (int currentState) {
         this.currentState = currentState;
     }

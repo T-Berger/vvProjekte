@@ -1,6 +1,7 @@
-package enums;
+package deprecated;
 
-import javax.xml.bind.JAXB;
+import deprecated.InputSymbol;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;

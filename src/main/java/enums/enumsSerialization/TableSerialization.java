@@ -1,4 +1,6 @@
-package enums;
+package enums.enumsSerialization;
+import enums.Table;
+
 import java.io.File;
 import javax.xml.bind.*;
 public class TableSerialization {

@@ -1,14 +1,17 @@
 package enums;
 
+import javax.xml.bind.annotation.*;
+/**
+ * The entrys in the Alphabet enum is the Alphabet for the Input- and Outputsymbol*/
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
+@XmlEnum
 public enum Alphabet {
-        a(0),b(1),c(2),d(4),e(5),f(6);
-        private final int currentInputSymbol;
-        // default enum constructor
-        Alphabet (int currentInputSymbol){
-            this.currentInputSymbol = currentInputSymbol;
+    A,B,C,D,E,F,G,H,z,ERROR;
+    public String printOutput (){
+        return this.toString();
         }
-        // getter for the current Symbol step/ process
-        public int getCurrentInputSymbol(){ return currentInputSymbol;}
 
-        static public final Integer symbolLength= InputSymbol.values().length;
+    @XmlElement(name="outputTable")
+    public static Alphabet[] alphabet ={A,B};
 }

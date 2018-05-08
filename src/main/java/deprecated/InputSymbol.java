@@ -1,4 +1,6 @@
-package enums;
+package deprecated;
+
+import enums.Alphabet;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,13 +10,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 @XmlRootElement(name = "InputSymbol")
 public enum InputSymbol {
-    t0(0, OutputAlphabet.A),t1(1, OutputAlphabet.A),t3(3, OutputAlphabet.B),t4(4, OutputAlphabet.B),t5(5, OutputAlphabet.B),t6(6, OutputAlphabet.B);
+    t0(0, Alphabet.A),t1(1, Alphabet.A),t3(3, Alphabet.B),t4(4, Alphabet.B),t5(5, Alphabet.B),t6(6, Alphabet.B);
     private final int currentInputSymbol;
     private InputSymbol nextInputSymbol;
     private InputSymbol previousInputSymbol;
-    public OutputAlphabet value;
+    public Alphabet value;
     // default enum constructor
-    InputSymbol (int currentInputSymbol, OutputAlphabet value){
+    InputSymbol (int currentInputSymbol, Alphabet value){
         this.currentInputSymbol = currentInputSymbol;
         this.value = value;
     }

@@ -1,6 +1,6 @@
 package deprecated;
 
-import enums.OutputAlphabet;
+import enums.Alphabet;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -13,7 +13,7 @@ public class Symbol {
     final private int index;
     private Symbol nextInputSymbol;
     private Symbol previousInputSymbol;
-    private OutputAlphabet inputValue;
+    private Alphabet inputValue;
 //    @XmlEnum
 //    enum InputSymbol {
 //        a(0),b(1),c(2);
@@ -44,7 +44,7 @@ public class Symbol {
 //        }
 //    }
 
-    public Symbol(OutputAlphabet inputValue){
+    public Symbol(Alphabet inputValue){
         this.inputValue = inputValue;
         index = counter++;
     }
