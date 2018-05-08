@@ -14,15 +14,18 @@ die Aufgaben wurden vollständig erfüllt
 
 Es ist möglich die Default Konfiguration zu ändern.
 Diese findet man in xml Verzeichnis mit den Titel Machine.xml.
+
 **Damit können die Tabellen der Zustandsübergangsfunktion und Ausgabefunktion geändert**
+
 Übergangstabelle:
-Alles was zwischen <transitonTable> * </transitonTable> sowie zischen Item Tags <item> </item>  kann mit einen anderen Enum State Values geändert werden.
+Alles was zwischen \<transitonTable\> * \</transitonTable\> sowie zischen Item Tags <item> </item>  kann mit einen anderen Enum State Values geändert werden.
+
 Ausgabetabelle:
-Alles was zwischen <alphabet> * </alphabet> sowie zischen Item Tags <item> </item>  kann mit Anderen Enum Alphabet Values geändert werden.
+Alles was zwischen \<alphabet\> * \</alphabet\> sowie zischen Item Tags <item> </item>  kann mit Anderen Enum Alphabet Values geändert werden.
 In den <transitionSymbols>*</transitionSymbols> kann die Wertigkeit der Inputsymbole verändert werden   
 ### Ändern des Alphabets
 Das Ändern des Alphabets ist durch XJC möglich.
-durch hinzu fügen von <xsd:enumeration value="ALPHABET_VALUE"/> Tag-Element kann das Alphabet erweitert werden.
+durch hinzu fügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
 ALPHABET_VALUE = Platzhbalter für neuen Enum Eintrag  
 Dafür muss dieser Befehl verwenden werden
     "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
