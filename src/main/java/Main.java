@@ -1,4 +1,3 @@
-
 import watcherThreads.InputFileWatcher;
 import machine.MealyThread;
 import watcherThreads.WriteOutputBlockingQueue;
@@ -15,7 +14,7 @@ public class Main {
         InputFileWatcher directoryFileWatcherOnInput = new InputFileWatcher(inputBlockingQueue);
         WriteOutputBlockingQueue blockQueueing = new WriteOutputBlockingQueue(outputBlockingQueue);
 
-        MealyThread mealyThread = new MealyThread(inputBlockingQueue, outputBlockingQueue, "MachineTEST");
+        MealyThread mealyThread = new MealyThread(inputBlockingQueue, outputBlockingQueue, "Machine");
         new Thread(directoryFileWatcherOnInput).start();
         new Thread(mealyThread).start();
         new Thread(blockQueueing).start();
