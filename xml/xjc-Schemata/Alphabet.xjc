@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.example.com" xmlns="http://www.example.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:simpleType name="Alphabet">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="A"/>
+            <xsd:enumeration value="B"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="root">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="local" type="Alphabet"/>
+                <xsd:element name="ref" type="Alphabet"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
