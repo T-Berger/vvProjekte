@@ -15,7 +15,7 @@ die Aufgaben wurden vollständig erfüllt. In den Test Klassen findet man einen 
 Es ist möglich die Default Konfiguration zu ändern.
 Diese findet man in xml Verzeichnis mit den Titel Machine.xml.
 
-**Damit können die Tabellen der Zustandsübergangsfunktion und Ausgabefunktion geändert**
+**Damit können die Tabellen der Zustandsübergangsfunktion und Ausgabefunktion geändert werden.**
 
 Übergangstabelle:
 Alles was zwischen \<transitonTable\> * \</transitonTable\> sowie zischen Item Tags \<item\> \</item\>  kann mit einen anderen Enum State Values geändert werden.
@@ -34,13 +34,14 @@ Um eine neue default Config zu erstellen muss in der MealyMachine diese Zeilen
 auskommentiert werden. Danach muss entweder MachineSerilization.main oder MachineSerilization.marshaller ausgeführt werden
 ### Ändern des Alphabets
 Das Ändern des Alphabets ist durch XJC möglich.
-durch hinzufügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element kann das Alphabet erweitert werden.
+Durch hinzufügen von \<xsd:enumeration value="ALPHABET_VALUE"/\> Tag-Element in der Datei /xml/xjc-Schemata/Alphabet.xjc kann das Alphabet erweitert werden.
 
 ALPHABET_VALUE = Platzhalter für neuen Enum Eintrag  
 
-Dafür muss dieser Befehl verwenden werden
+Um die Änderungen zu Übernehmen muss dieser Befehl verwenden werden
 
-    "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata
+    "PFADzurJavaSDK1.8"/bin/xjc -d "PFADzumREPO"/src/main/java/enums "PFADzumREPO"/xml/xjc-Schemata/Alphabet.xjc
+    
     
 .
 
