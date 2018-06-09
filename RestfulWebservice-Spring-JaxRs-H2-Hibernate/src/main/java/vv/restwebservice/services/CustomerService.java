@@ -1,20 +1,15 @@
-package services;
+package vv.restwebservice.services;
 
-import dao.interfacesDAO.ICustomerDAO;
-import modells.Contract;
-import modells.Customer;
+
+import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
-import services.interfacesService.IContractService;
-import services.interfacesService.ICustomerService;
+import vv.restwebservice.dao.interfacesDAO.ICustomerDAO;
+import vv.restwebservice.modells.Customer;
+import vv.restwebservice.services.interfacesService.ICustomerService;
 
 import java.util.List;
 
-
+@org.springframework.stereotype.Service
 public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerDAO customerDAO;

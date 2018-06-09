@@ -1,11 +1,11 @@
-package endpoints;
+package vv.restwebservice.endpoints;
 
-import modells.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import services.interfacesService.ICustomerService;
+import vv.restwebservice.modells.Customer;
+import vv.restwebservice.services.interfacesService.ICustomerService;
 
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @Component
-@Path("/customer")
+//@Path("/customer")
 @Stateless
 public class CustomerEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(CustomerEndpoint.class);

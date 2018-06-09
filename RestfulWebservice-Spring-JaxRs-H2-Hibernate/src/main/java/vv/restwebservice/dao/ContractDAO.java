@@ -1,8 +1,9 @@
-package dao;
+package vv.restwebservice.dao;
 
-import dao.interfacesDAO.IContractDAO;
-import modells.Contract;
+
 import org.springframework.stereotype.Repository;
+import vv.restwebservice.dao.interfacesDAO.IContractDAO;
+import vv.restwebservice.modells.Contract;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

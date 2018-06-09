@@ -1,6 +1,6 @@
-package services.interfacesService;
+package vv.restwebservice.services.interfacesService;
 
-import modells.Contract;
+import vv.restwebservice.modells.Contract;
 
 import java.util.List;
 

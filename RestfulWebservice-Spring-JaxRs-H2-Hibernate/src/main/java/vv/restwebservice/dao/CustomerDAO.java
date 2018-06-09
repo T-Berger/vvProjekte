@@ -1,8 +1,9 @@
-package dao;
+package vv.restwebservice.dao;
 
-import dao.interfacesDAO.ICustomerDAO;
-import modells.Customer;
+
 import org.springframework.stereotype.Repository;
+import vv.restwebservice.dao.interfacesDAO.ICustomerDAO;
+import vv.restwebservice.modells.Customer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,10 +23,10 @@ public class CustomerDAO implements ICustomerDAO {
         String hql = "FROM Customer as atcl ORDER BY atcl.customerId";
         return (List<Customer>) entityManager.createQuery(hql).getResultList();
     }
-    @Override
-    public void addCustomer(Customer customer) {
-        entityManager.persist(customer);
-    }
+//    @Override
+//    public void addCustomer(Customer customer) {
+//        entityManager.persist(customer);
+//    }
     @Override
     public void updateCustomer(Customer customer) {
         Customer cstmer = getCustomerById(customer.getCustomerId());

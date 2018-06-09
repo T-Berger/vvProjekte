@@ -1,11 +1,12 @@
-package endpoints;
+package vv.restwebservice.endpoints;
 
-import modells.Contract;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import services.interfacesService.IContractService;
+import vv.restwebservice.modells.Contract;
+import vv.restwebservice.services.interfacesService.IContractService;
 
 
 import javax.ejb.Stateless;

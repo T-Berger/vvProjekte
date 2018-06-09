@@ -1,4 +1,4 @@
-package modells;
+package vv.restwebservice.modells;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;

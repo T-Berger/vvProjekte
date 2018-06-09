@@ -1,4 +1,4 @@
-package modells;
+package vv.restwebservice.modells;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Table(name="Contract-Table")
 // @NamedQuery(name="Contract.findAll", query="SELECT b FROM Contract b ORDER BY b.id")
 @XmlRootElement
-public class Contract implements Serializable {
+public class  Contract implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id

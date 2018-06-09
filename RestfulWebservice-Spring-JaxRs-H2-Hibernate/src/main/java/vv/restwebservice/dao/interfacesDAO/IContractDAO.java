@@ -1,6 +1,6 @@
-package dao.interfacesDAO;
+package vv.restwebservice.dao.interfacesDAO;
 
-import modells.Contract;
+import vv.restwebservice.modells.Contract;
 
 import java.util.List;
 

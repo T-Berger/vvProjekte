@@ -1,4 +1,4 @@
-package modells;
+package vv.restwebservice.modells;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
