@@ -15,19 +15,19 @@ import java.net.URI;
 import java.util.List;
 
 @Component
-//@Path("/customer")
+@Path("/customer")
 @Stateless
 public class CustomerEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(CustomerEndpoint.class);
     @Autowired
     private ICustomerService customerService;
-    @GET
-    @Path("/details")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getCustomerDetails() {
-        List<Customer> list = customerService.getAllCustomers();
-        return Response.ok(list).build();
-    }
+//    @GET
+//    @Path("/details")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response getCustomerDetails() {
+//        List<Customer> list = customerService.getAllCustomers();
+//        return Response.ok(list).build();
+//    }
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,7 +44,8 @@ public class CustomerEndpoint {
             logger.info("Customer already exits.");
             return Response.status(Response.Status.CONFLICT).build();
         }
-        return Response.created(URI.create("/spring-app/customer/"+ customer.getCustomerId())).build();
+
+        return Response.created(URI.create("/spring-app/customer/"+ customer.getid())).build();
     }
     @PUT
     @Path("/update")
@@ -58,6 +59,7 @@ public class CustomerEndpoint {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteCustomer(@PathParam("id") Integer id) {
+
         customerService.deleteCustomer(id);
         return Response.noContent().build();
     }

@@ -5,9 +5,9 @@ import vv.restwebservice.modells.Contract;
 import java.util.List;
 
 public interface IContractService {
-    List<Contract> getAllContracts();
-    Contract getContractById(int contractId);
+//    List<Contract> getAllContracts();
+    Contract getContractById(long contractId);
     boolean addContract(Contract contract);
     void updateContract(Contract contract);
-    void deleteContract(int contractId);
+    void deleteContract(Long contractId);
 }

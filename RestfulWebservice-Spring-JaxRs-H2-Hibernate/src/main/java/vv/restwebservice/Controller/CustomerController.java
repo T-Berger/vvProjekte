@@ -14,8 +14,9 @@ import vv.restwebservice.services.CustomerService;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("customer")
+//@Controller
+//@RequestMapping("customer")
+@RestController
 public class CustomerController {
 
     @Autowired
@@ -25,11 +26,11 @@ public class CustomerController {
         Customer customer = customerService.getCustomerById(id);
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
-    @GetMapping("customers")
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        List<Customer> list = customerService.getAllCustomers();
-        return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
-    }
+//    @GetMapping("customers")
+//    public ResponseEntity<List<Customer>> getAllCustomers() {
+//        List<Customer> list = customerService.getAllCustomers();
+//        return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
+//    }
     @PostMapping("customer")
     public ResponseEntity<Void> addCustomer(@RequestBody Customer customer, UriComponentsBuilder builder) {
         boolean flag = customerService.addCustomer(customer);
@@ -37,7 +38,7 @@ public class CustomerController {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/customer/{id}").buildAndExpand(customer.getCustomerId()).toUri());
+        headers.setLocation(builder.path("/customer/{id}").buildAndExpand(customer.getid()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
     @PutMapping("customer")

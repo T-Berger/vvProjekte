@@ -13,6 +13,6 @@ import java.util.ResourceBundle;
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         register(ContractEndpoint.class);
-//        register(CustomerEndpoint.class);
+        register(CustomerEndpoint.class);
     }
 }

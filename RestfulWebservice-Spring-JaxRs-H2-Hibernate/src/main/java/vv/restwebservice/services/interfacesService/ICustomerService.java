@@ -6,9 +6,9 @@ import vv.restwebservice.modells.Customer;
 import java.util.List;
 
 public interface ICustomerService {
-        List<Customer> getAllCustomers();
-        Customer getCustomerById(int customerId);
+//        List<Customer> getAllCustomers();
+        Customer getCustomerById(long id);
         boolean addCustomer(Customer customer);
         void updateCustomer(Customer customer);
-        void deleteCustomer(int customerId);
+        void deleteCustomer(long id);
 }

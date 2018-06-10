@@ -34,17 +34,19 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-jersey')
-//    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.session:spring-session-core')
-    runtime('com.h2database:h2')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+//    runtime('com.h2database:h2')
+    compile('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
     testCompile('org.springframework.security:spring-security-test')
-    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
-    // https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
+//    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+//    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+//    // https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api
+//    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
     // https://mvnrepository.com/artifact/javax.ejb/ejb-api
     compile group: 'javax.ejb', name: 'ejb-api', version: '3.0-alpha-1'
     // https://mvnrepository.com/artifact/org.jboss.jsfunit/jboss-jsfunit
@@ -53,11 +55,21 @@ dependencies {
     compile group: 'myfaces', name: 'myfaces-api', version: '1.1.1'
     // https://mvnrepository.com/artifact/javax.enterprise/cdi-api
     compile group: 'javax.enterprise', name: 'cdi-api', version: '2.0'
+
+
 //    // Docker
 //    classpath('se.transmode.gradle:gradle-docker:1.2')
 //    plugins {
 //        id "com.palantir.docker" version "0.19.2"
 //    }
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.1.Final'
+
+    // https://mvnrepository.com/artifact/javax.activation/activation
+    compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+
 }
 
 apply plugin: 'com.palantir.docker'

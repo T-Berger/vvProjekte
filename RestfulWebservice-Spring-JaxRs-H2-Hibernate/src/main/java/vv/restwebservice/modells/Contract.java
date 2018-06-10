@@ -1,35 +1,102 @@
 package vv.restwebservice.modells;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-@Table(name="Contract-Table")
+//@Table(name="Contract-Table")
 // @NamedQuery(name="Contract.findAll", query="SELECT b FROM Contract b ORDER BY b.id")
 @XmlRootElement
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class  Contract implements Serializable {
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
-    private int id;
+//    @GenericGenerator(name="hilo-strategy", strategy = "hilo")
+//    @org.hibernate.annotations.GenericGenerator(name=“hilo-strategy”, strategy = “hilo”)
+//    @GeneratedValue(generator = ”hilo-strategy”)
+//    @GeneratedValue
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name="contractId")
+    @JsonProperty("contractId")
+    private long id;
+
     private String type;
     private String surname;
     private float price;
 
+    @ManyToOne (fetch=FetchType.EAGER,cascade = CascadeType.REFRESH)
+    @JoinColumn(name="CUSTOMER_ID")
+    @JsonIgnore
     private Customer customer;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    private long foreignKey;
+    public Contract(){};
+    public Contract(String type, String surname, float price, Customer customer) {
+        this.type = type;
+        this.surname = surname;
+        this.price = price;
+        this.customer = customer;
+        this.foreignKey = customer.getid();
     }
 
+    public Contract(String type, String surname, float price, Customer customer, long id) {
+        this.type = type;
+        this.surname = surname;
+        this.price = price;
+        this.customer = customer;
+        this.foreignKey = customer.getid();
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Contract)) return false;
+        Contract contract = (Contract) o;
+        return id == contract.id &&
+                Float.compare(contract.getPrice(), getPrice()) == 0 &&
+                Objects.equals(getType(), contract.getType()) &&
+                Objects.equals(getSurname(), contract.getSurname()) &&
+                Objects.equals(getCustomer(), contract.getCustomer());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, getType(), getSurname(), getPrice(), getCustomer());
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", surname='" + surname + '\'' +
+                ", price=" + price +
+                ", customer=" + foreignKey +
+                '}';
+    }
+
+    //    public static long getSerialVersionUID() {
+//        return serialVersionUID;
+//    }
+
     //...constructors, getters and setters
-    public int getContractId() {
+    public long getContractId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -63,5 +130,13 @@ public class  Contract implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public long getForeignKey() {
+        return foreignKey;
+    }
+
+    public void setForeignKey(long foreignKey) {
+        this.foreignKey = foreignKey;
     }
 }

@@ -1,15 +1,35 @@
 package vv.restwebservice.modells;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Address-Table")
+//@Entity
+//@Table(name="Address-Table")
+@Embeddable
 public class Address {
+
     private String street;
     private String zip;
     private String location;
 
+    public Address (){
+        super();
+    }
+    public Address(String street, String zip, String location) {
+        this.street = street;
+        this.zip = zip;
+        this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", zip='" + zip + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
     //Getters and Setters
 
     public String getStreet() {
@@ -35,4 +55,5 @@ public class Address {
     public void setLocation(String location) {
         this.location = location;
     }
+
 }
