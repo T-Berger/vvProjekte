@@ -1,6 +1,7 @@
 package vv.restwebservice.proxy;
 
 import org.aopalliance.reflect.Class;
+import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.omg.CORBA.Object;
 import vv.restwebservice.modells.Contract;
 import vv.restwebservice.modells.Customer;
@@ -17,7 +18,9 @@ class BasicProxyFunctions {
     private Client client;
 //    private final String authToken ="$2a$04$x9sT8qPPOeS7bsWHHAUEY.9qtschwL6qsZ/53TYaezM4KtzSfQmpy";
     BasicProxyFunctions(){
-        client = ClientBuilder.newClient();
+        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("user", "qwer");
+        client = ClientBuilder.newClient().register(feature);
+
     }
 
 

@@ -3,6 +3,7 @@ package vv.restwebservice.services;
 
 import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import vv.restwebservice.dao.interfacesDAO.ICustomerDAO;
 import vv.restwebservice.modells.Customer;
 import vv.restwebservice.services.interfacesService.ICustomerService;
@@ -10,6 +11,7 @@ import vv.restwebservice.services.interfacesService.ICustomerService;
 import java.util.List;
 
 @org.springframework.stereotype.Service
+@Transactional
 public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerDAO customerDAO;

@@ -23,8 +23,8 @@ public class Authenticator implements ClientRequestFilter {
         headers.add("Authorization", basicAuthentication);
 
     }
-
-    private String getBasicAuthentication() {
+    //private
+    public String getBasicAuthentication() {
         String token = this.user + ":" + this.password;
         try {
             return "BASIC " + DatatypeConverter.printBase64Binary(token.getBytes("UTF-8"));

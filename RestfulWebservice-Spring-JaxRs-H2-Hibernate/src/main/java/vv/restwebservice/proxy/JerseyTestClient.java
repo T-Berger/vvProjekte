@@ -1,4 +1,6 @@
 package vv.restwebservice.proxy;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.hibernate.annotations.AnyMetaDef;
 import org.springframework.data.domain.AfterDomainEventPublication;
 import vv.restwebservice.modells.Address;
@@ -7,10 +9,7 @@ import vv.restwebservice.modells.Customer;
 
 import javax.ejb.Stateless;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.client.*;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,7 +39,7 @@ public class JerseyTestClient {
     }
 
     public void getCustomerDetails() {
-        Client client = ClientBuilder.newClient().register( new Authenticator("user","537ac6be-8881-4fd9-94a9-68607007f77c"));
+        Client client = ClientBuilder.newClient().register( HttpAuthenticationFeature.basic("user", "qwer"));
 //        WebTarget base = client.target("http://localhost:8080/spring-app/customer");
 //        WebTarget details = base.path("details");
         WebTarget details = client.target(uriCustomer);
@@ -57,13 +56,35 @@ public class JerseyTestClient {
 //        client.close();
     }
     public Customer getCustomerById(int customerId) {
-        Client client = ClientBuilder.newClient();
-        WebTarget base = client.target(uriCustomer);
-        WebTarget customerById = base.path("{id}").resolveTemplate("id", customerId);
-        System.out.println(uriCustomer);
-        System.out.println(customerById);
-        Customer customer = customerById.request(MediaType.APPLICATION_JSON).header("Authorization", "Basic " + authToken)
-                .get(Customer.class);
+
+
+//        Client client = ClientBuilder.newClient();
+        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basicBuilder().build();
+//        client.register(feature);
+//        client.register(SseFeature.class);
+//        WebTarget target = client.target(baseurl + "/v1/devices/events/")
+//                .property(HttpAuthenticationFeature.HTTP_AUTHENTICATION_BASIC_USERNAME, "...")
+//                .property(HttpAuthenticationFeature.HTTP_AUTHENTICATION_BASIC_PASSWORD, "...");
+
+
+
+//        Client client = ClientBuilder.newClient().register( new Authenticator("user","qwer"));
+
+
+//        Client client = ClientBuilder.newClient().register(feature);
+//        WebTarget base = client.target(uriCustomer);
+//        WebTarget customerById = base.path("{id}").resolveTemplate("id", customerId);//.property(HttpAuthenticationFeature.
+//                //HTTP_AUTHENTICATION_BASIC_USERNAME,"user").property(HttpAuthenticationFeature.HTTP_AUTHENTICATION_BASIC_PASSWORD,"qwer");
+//        System.out.println(uriCustomer);
+//        System.out.println(customerById);
+        URI uri  = UriBuilder.fromUri(base_URi_Server).port(PORT).build();
+        HttpAuthenticationFeature basicAuth = HttpAuthenticationFeature.basic("user", "qwer");
+        Client client = ClientBuilder.newBuilder().register(basicAuth).build();
+        WebTarget target = client.target(uri).path(base_URi_Customer+"/{id}").resolveTemplate("id",customerId);
+        Customer customer = target.request(MediaType.APPLICATION_JSON).get(Customer.class);
+
+//        Customer customer = customerById.request(MediaType.APPLICATION_JSON).header("Authorization", "Basic " + authToken)
+//                .get(Customer.class);
         System.out.println(customer.toString());
         return customer;
 //        client.close();
@@ -80,11 +101,11 @@ public class JerseyTestClient {
     }
 
     public List<Contract> getContractDetails() {
-        Client client = ClientBuilder.newClient();
+        Client client = ClientBuilder.newClient().register( new Authenticator("user","qwer"));
 //        WebTarget base = client.target(uriContract);
 //        WebTarget details = base.path("details");
         WebTarget details = client.target(uriContract);
-        List<Contract> list = details.request(MediaType.APPLICATION_JSON).header("Authorization", "Basic " + authToken)
+        List<Contract> list = details.request(MediaType.APPLICATION_JSON)//.header("Authorization", "Basic " + authToken)
                 .get(new GenericType<List<Contract>>() {});
 
         list.stream().forEach(contract ->
@@ -96,16 +117,34 @@ public class JerseyTestClient {
     }
 
     public Contract getContractById(int contractId) {
-        Client client = ClientBuilder.newClient();
-        WebTarget base = client.target(uriContract);
-        WebTarget contractById = base.path("{id}").resolveTemplate("id", contractId);
-        Contract contract = contractById.request(MediaType.APPLICATION_JSON).header("Authorization", "Basic " + authToken)
-                .get(Contract.class);
+//        Client client = ClientBuilder.newClient().register( new Authenticator("user","qwer").getBasicAuthentication());
+//        WebTarget base = client.target(uriContract);
+//        WebTarget contractById = base.path("{id}").resolveTemplate("id", contractId);
+//        Contract contract = contractById.request(MediaType.APPLICATION_JSON)//.header("Authorization", "Basic " + authToken)
+//                .get(Contract.class);
+
+        ClientConfig config = new ClientConfig();
+
+        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic("user", "qwer");
+
+        Client client = ClientBuilder.newClient(config);
+        client.register(feature);
+//        private final URI base_URi_Server = URI.create("http://localhost:8080/");
+//        private final String base_URi_Customer = ("/spring-app/customer");
+//        private final String base_URi_Contract = ("/spring-app/contract");
+        WebTarget webTarget = client.target("http://localhost:8080/").path("/spring-app/contract/{id}").resolveTemplate("id",contractId);
+        Contract contract = webTarget.request(MediaType.APPLICATION_JSON).get(Contract.class);
         System.out.println(contract.toString());
-        System.out.println(contract.getContractId()+", "+ contract.getForeignKey()+", "+ contract.getSurname()+
-                ", "+ contract.getPrice()+", "+ contract.getType());
-//        client.close();
-        return contract;
+        Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
+
+        Response response = invocationBuilder.get();
+        response.getMediaType().getType();
+        System.out.println(response);
+//        System.out.println(contract.toString());
+//        System.out.println(contract.getContractId()+", "+ contract.getForeignKey()+", "+ contract.getSurname()+
+//                ", "+ contract.getPrice()+", "+ contract.getType());
+////        client.close();
+        return null;
     }
     public void addContract(Contract contract) {
         basicProxyFunctions.add(uriContract,contract);
@@ -137,11 +176,15 @@ public class JerseyTestClient {
         mordred.setContracts(contracts1);
         mordred.setAddress(address1);
 
+        System.out.println(new Authenticator("user","qwer").getBasicAuthentication());
+        jerseyClient.getContractById(18);
+
         jerseyClient.addCustomer(mordred);
         jerseyClient.addCustomer(margred);
-
+        jerseyClient.getContractById(18);
         Contract testContract =new Contract("TEST","QWERTY",0,margred);
         jerseyClient.addContract(testContract);// do the setup
+        jerseyClient.getCustomerById(4);
 
 //        jerseyClient.updateContract(new Contract("123","123",2,margred,9));
 

@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class ContractService implements IContractService {
     @Autowired
     private IContractDAO contractDAO;
