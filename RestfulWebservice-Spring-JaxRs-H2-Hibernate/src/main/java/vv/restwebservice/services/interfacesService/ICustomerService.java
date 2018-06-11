@@ -10,4 +10,5 @@ public interface ICustomerService {
         boolean addCustomer(Customer customer);
         void updateCustomer(Customer customer);
         void deleteCustomer(long id);
+        boolean existByID (long id);
 }

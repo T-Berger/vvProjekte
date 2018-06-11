@@ -10,4 +10,5 @@ public interface IContractService {
     boolean addContract(Contract contract);
     void updateContract(Contract contract);
     void deleteContract(Long contractId);
+    boolean existByID(long id);
 }

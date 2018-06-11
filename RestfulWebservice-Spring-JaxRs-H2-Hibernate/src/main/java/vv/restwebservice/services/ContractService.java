@@ -25,7 +25,7 @@ public class ContractService implements IContractService {
         }
         return null;
     }
-    // @Override
+    @Override
     public List<Contract> getAllContracts(){
         List<Contract> contracts = new ArrayList<>();
         contractDAO.findAll().forEach(contracts::add);
@@ -100,5 +100,10 @@ public class ContractService implements IContractService {
             }
         });
         return c.get();
+    }
+    public boolean existByID(long id){
+        System.out.println(id);
+        boolean ret = contractDAO.existsById(id);
+        return ret;
     }
 }

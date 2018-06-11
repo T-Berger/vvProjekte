@@ -1,9 +1,11 @@
 package vv.restwebservice.services;
 
 
+import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import vv.restwebservice.dao.interfacesDAO.ICustomerDAO;
+import vv.restwebservice.modells.Contract;
 import vv.restwebservice.modells.Customer;
 import vv.restwebservice.services.interfacesService.ICustomerService;
 
@@ -80,5 +82,8 @@ public class CustomerService implements ICustomerService {
         });
 //        System.out.println("RETURN FLAG" + true);
         return returnFlag.get();
+    }
+    public boolean existByID (long id){
+        return customerDAO.existsById(id);
     }
 }

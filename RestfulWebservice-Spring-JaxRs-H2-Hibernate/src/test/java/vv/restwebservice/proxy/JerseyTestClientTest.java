@@ -61,7 +61,7 @@ public class JerseyTestClientTest {
         Customer up = jerseyClient.getCustomerById(2);
 //        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
-
+        up.setid(2);
         up.setSurname("Paladin");
         jerseyClient.updateCustomer(up);
         String s = jerseyClient.getCustomerById(2).getSurname();

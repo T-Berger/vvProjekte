@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vv.restwebservice.modells.Customer;
+import vv.restwebservice.services.ContractService;
+import vv.restwebservice.services.CustomerService;
 import vv.restwebservice.services.interfacesService.ICustomerService;
 
 import javax.ejb.Stateless;
@@ -50,7 +52,7 @@ public class CustomerEndpoint {
     public Response addCustomer(Customer customer) {
         boolean isAdded = customerService.addCustomer(customer);
         if (!isAdded) {
-            logger.info("Customer already exits.");
+            logger.info("Customer already existing.");
             return Response.status(Response.Status.CONFLICT).build();
         }
 
@@ -61,6 +63,14 @@ public class CustomerEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateCustomer(Customer customer) {
+        if(customer.getid() == 0 ){
+            logger.info("WARNING Customer is not existing, creating new Customer\".");
+            return addCustomer(customer);
+        }
+        if( customerService.existByID(customer.getid())){
+            logger.info("WARNING Customer is not existing, creating new Customer\".");
+            return addCustomer(customer);
+        }
         System.out.println(customer.toString());
         customerService.updateCustomer(customer);
         return Response.ok(customer).build();
