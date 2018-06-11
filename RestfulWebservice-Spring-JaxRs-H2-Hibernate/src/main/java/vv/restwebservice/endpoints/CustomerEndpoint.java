@@ -1,5 +1,7 @@
 package vv.restwebservice.endpoints;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import java.util.List;
 @Component
 @Path("/customer")
 @Stateless
+@Api
 public class CustomerEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(CustomerEndpoint.class);
     @Autowired
@@ -28,6 +31,8 @@ public class CustomerEndpoint {
 //        List<Customer> list = customerService.getAllCustomers();
 //        return Response.ok(list).build();
 //    }
+
+//    @ApiOperation("Updates an existing student.")
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)

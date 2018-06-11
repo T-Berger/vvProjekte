@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -16,6 +18,7 @@ import java.util.Objects;
 // @NamedQuery(name="Contract.findAll", query="SELECT b FROM Contract b ORDER BY b.id")
 @XmlRootElement
 //@JsonIgnoreProperties(ignoreUnknown = true)
+@ApiModel
 public class  Contract implements Serializable {
 //    private static final long serialVersionUID = 1L;
 
@@ -29,9 +32,11 @@ public class  Contract implements Serializable {
     @Column(name="contractId")
     @JsonProperty("contractId")
     private long id;
-
+    @ApiModelProperty
     private String type;
+    @ApiModelProperty
     private String surname;
+    @ApiModelProperty
     private float price;
 
     @ManyToOne (fetch=FetchType.EAGER,cascade = CascadeType.REFRESH)
@@ -86,6 +91,8 @@ public class  Contract implements Serializable {
                 ", customer=" + foreignKey +
                 '}';
     }
+
+
 
     //    public static long getSerialVersionUID() {
 //        return serialVersionUID;

@@ -1,6 +1,8 @@
 package vv.restwebservice.modells;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,6 +15,7 @@ import java.util.Objects;
 @Entity
 //@Table(name="Customer-Table")
 // @NamedQuery(name="Customer.findAll", query="SELECT b FROM Customer b ORDER BY b.id")
+@ApiModel
 @XmlRootElement
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer implements Serializable {
