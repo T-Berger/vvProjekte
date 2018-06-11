@@ -2,6 +2,9 @@ package vv.restwebservice.endpoints;
 
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,14 @@ import javax.ejb.Stateless;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 @Component
 @Path("/contract")
 @Stateless
+@Api
 public class ContractEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(ContractEndpoint.class);
     @Autowired
@@ -65,4 +71,13 @@ public class ContractEndpoint {
         contractService.deleteContract(contractId);
         return Response.noContent().build();
     }
+    @DELETE
+    @Path("/full/{contract}")
+//    @Consumes(MediaType.APPLICATION_JSON)
+    public  Response deleteContractByValues(@PathParam("contract") String c) throws IOException {
+        Contract help = new ObjectMapper().readValue(c, Contract.class);
+        System.out.println(help.toString());
+        return Response.noContent().build();
+    }
+
 }

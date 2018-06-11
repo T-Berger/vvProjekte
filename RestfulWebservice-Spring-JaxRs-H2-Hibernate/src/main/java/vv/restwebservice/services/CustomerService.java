@@ -5,9 +5,11 @@ import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import vv.restwebservice.dao.interfacesDAO.ICustomerDAO;
+import vv.restwebservice.modells.Contract;
 import vv.restwebservice.modells.Customer;
 import vv.restwebservice.services.interfacesService.ICustomerService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -22,10 +24,12 @@ public class CustomerService implements ICustomerService {
         return obj;
         //////////////////////////////////////////////////////////////////////Falls ID nicht gefunden wird
     }
-//    @Override
-//    public List<Customer> getAllCustomers(){
-//        return customerDAO.getAllCustomers();
-//    }
+    //@Override
+    public List<Customer> getAllCustomers(){
+        List<Customer> customers = new ArrayList<>();
+        customerDAO.findAll().forEach(customers::add);
+        return  customers;
+    }
     @Override
     public synchronized boolean addCustomer(Customer customer){
         /////DAS HIER
