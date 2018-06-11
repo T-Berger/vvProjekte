@@ -1,7 +1,5 @@
 package vv.restwebservice.modells;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -35,7 +33,8 @@ public class Customer implements Serializable {
 
     private String description;
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,orphanRemoval = true)
+            fetch = FetchType.EAGER,
+            orphanRemoval = false)
     private List<Contract> contracts;
 
     public Customer(String forename, String surname, Date birthday, String description) {
@@ -45,15 +44,15 @@ public class Customer implements Serializable {
         this.description = description;
     }
     public Customer(){}
-//
-//    public Customer(String forename, String surname, Date birthday, Address address, String description, List<Contract> contracts) {
-//        this.forename = forename;
-//        this.surname = surname;
-//        this.birthday = birthday;
-//        this.address = address;
-//        this.description = description;
-//        this.contracts = contracts;
-//    }
+
+    public Customer(String forename, String surname, Date birthday, Address address, String description, List<Contract> contracts) {
+        this.forename = forename;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.address = address;
+        this.description = description;
+        this.contracts = contracts;
+    }
 
 //    public static long getSerialVersionUID() {
 //        return serialVersionUID;

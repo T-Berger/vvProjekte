@@ -1,8 +1,6 @@
 package vv.restwebservice.modells;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 //@Entity
 //@Table(name="Address-Table")

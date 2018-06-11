@@ -47,48 +47,41 @@ public class JerseyTestClientTest {
         jerseyClient.addCustomer(margred);
         jerseyClient.addCustomer(mordred);
         jerseyClient.addContract(testContract);
-        System.setOut(new PrintStream(outContent));
+//        System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
 
-
-//    @BeforeClass
-//
-//   public static void setUp() throws Exception {
-//        JerseyTestClientTest test =new JerseyTestClientTest();
-//
-//
-//    }
     @Test
-    public void a() throws ParseException {
-        JerseyTestClientTest test = new JerseyTestClientTest();
-
-        assertNotEquals("", outContent.toString());
+    public void integration() throws ParseException {
+//        JerseyTestClientTest test = new JerseyTestClientTest();
+//        assertNotEquals("", outContent.toString());
+        assertEquals("", errContent.toString());
+        System.out.println("qq");
+        jerseyClient.getContractById(1);
+        Customer up = jerseyClient.getCustomerById(2);
+//        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
 
-        test.jerseyClient.getContractById(1);
-        test.jerseyClient.getCustomerById(2);
-        assertNotEquals("", outContent.toString());
-        assertEquals("", errContent.toString());
-
-        test.mordred.setSurname("Paladin");
-        jerseyClient.updateCustomer(test.mordred);
-        assertEquals(test.mordred.getSurname(),jerseyClient.getContractById(2).getSurname());
-        assertNotEquals("", outContent.toString());
-        assertEquals("", errContent.toString());
-
+        up.setSurname("Paladin");
+        jerseyClient.updateCustomer(up);
+        String s = jerseyClient.getCustomerById(2).getSurname();
+        assertEquals("Paladin",s);
+//        assertNotEquals("", outContent.toString());
+        assertEquals("", errContent.toString());//
 
         jerseyClient.updateContract(new Contract("123","123",2,mordred,5));
-        assertEquals(jerseyClient.getContractById(5).getPrice(),2,0);
-        assertNotEquals("", outContent.toString());
+
+        Contract c = jerseyClient.getContractById(5);
+        System.out.println(c.toString());
+        assertEquals(c.getPrice(),2.0,0.0);
+//        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
 
-        test.jerseyClient.deleteCustomer(1);
-        test.jerseyClient.deleteContract(3);
+        jerseyClient.deleteCustomer(1);
+        jerseyClient.deleteContract(3);
 
-        assertNotEquals("", outContent.toString());
+//        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
-
     }
 
 

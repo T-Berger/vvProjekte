@@ -20,6 +20,7 @@ import org.springframework.security.web.savedrequest.NullRequestCache;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http
@@ -46,8 +47,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .requestCache()
                     .requestCache(new NullRequestCache())
                     .and()
-
                     .httpBasic();
+
+            //for h2 console
+            http.headers().frameOptions().disable();
+    }
+    @Bean
+    public BCryptPasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("use").password(encoder().encode("password")).roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("user1").password(encoder().encode("$2a$04$x9sT8qPPOeS7bsWHHAUEY.9qtschwL6qsZ/53TYaezM4KtzSfQmpy")).roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("user").password(encoder().encode("qwer")).roles("ADMIN");
+
     }
 //    @Bean
 //    public WebMvcConfigurer corsConfigurer() {
@@ -71,17 +86,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        return new InMemoryUserDetailsManager(user);
 //    }
-    @Bean
-    public BCryptPasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("use").password(encoder().encode("password")).roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("user1").password(encoder().encode("$2a$04$x9sT8qPPOeS7bsWHHAUEY.9qtschwL6qsZ/53TYaezM4KtzSfQmpy")).roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("user").password(encoder().encode("qwer")).roles("ADMIN");
-
-    }
 }
 

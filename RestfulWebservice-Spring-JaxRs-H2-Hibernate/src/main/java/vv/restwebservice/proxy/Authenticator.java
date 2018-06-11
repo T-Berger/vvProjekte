@@ -6,7 +6,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
+@Deprecated
 public class Authenticator implements ClientRequestFilter {
 
     private final String user;

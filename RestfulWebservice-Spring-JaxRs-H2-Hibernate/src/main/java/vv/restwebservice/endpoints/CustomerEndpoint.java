@@ -24,20 +24,24 @@ public class CustomerEndpoint {
     private static final Logger logger = LoggerFactory.getLogger(CustomerEndpoint.class);
     @Autowired
     private ICustomerService customerService;
-//    @GET
-//    @Path("/details")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getCustomerDetails() {
-//        List<Customer> list = customerService.getAllCustomers();
-//        return Response.ok(list).build();
-//    }
+    @GET
+    @Path("/customers")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCustomerDetails() {
+        List<Customer> list = customerService.getAllCustomers();
+        return Response.ok(list).build();
+    }
 
-//    @ApiOperation("Updates an existing student.")
+    @ApiOperation("Updates an existing student.")
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomerById(@PathParam("id") Integer id) {
         Customer customer = customerService.getCustomerById(id);
+        if (customer == null){
+            logger.info("CustomerID doesn't exits.");
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
         return Response.ok(customer).build();
     }
     @POST
@@ -57,6 +61,7 @@ public class CustomerEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateCustomer(Customer customer) {
+        System.out.println(customer.toString());
         customerService.updateCustomer(customer);
         return Response.ok(customer).build();
     }
@@ -64,7 +69,6 @@ public class CustomerEndpoint {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteCustomer(@PathParam("id") Integer id) {
-
         customerService.deleteCustomer(id);
         return Response.noContent().build();
     }

@@ -1,11 +1,7 @@
 package vv.restwebservice.dao.interfacesDAO;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import vv.restwebservice.modells.Contract;
-
-import java.util.List;
 
 public interface IContractDAO
         extends CrudRepository<Contract,Long> {

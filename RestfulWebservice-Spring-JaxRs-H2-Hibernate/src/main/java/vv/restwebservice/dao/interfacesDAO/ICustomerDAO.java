@@ -4,8 +4,6 @@ package vv.restwebservice.dao.interfacesDAO;
 import org.springframework.data.repository.CrudRepository;
 import vv.restwebservice.modells.Customer;
 
-import java.util.List;
-
 public interface ICustomerDAO
         extends CrudRepository<Customer,Long> {
 //    List<Customer> getAllCustomers();
