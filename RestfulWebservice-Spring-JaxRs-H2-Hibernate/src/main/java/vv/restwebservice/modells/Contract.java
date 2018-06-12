@@ -18,13 +18,12 @@ import java.util.Objects;
 //@JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel
 public class  Contract implements Serializable {
-//    private static final long serialVersionUID = 1L;
+    //    private static final long serialVersionUID = 1L;
 
     @Id
-//    @GenericGenerator(name="hilo-strategy", strategy = "hilo")
-//    @org.hibernate.annotations.GenericGenerator(name=“hilo-strategy”, strategy = “hilo”)
-//    @GeneratedValue(generator = ”hilo-strategy”)
-//    @GeneratedValue
+    //    @GenericGenerator(name="hilo-strategy", strategy = "hilo")
+    //    @org.hibernate.annotations.GenericGenerator(name=“hilo-strategy”, strategy = “hilo”)
+    //    @GeneratedValue(generator = ”hilo-strategy”)
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="contractId")
@@ -93,8 +92,8 @@ public class  Contract implements Serializable {
 
 
     //    public static long getSerialVersionUID() {
-//        return serialVersionUID;
-//    }
+    //        return serialVersionUID;
+    //    }
 
     //...constructors, getters and setters
     public long getContractId() {

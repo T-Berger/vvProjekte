@@ -2,11 +2,9 @@ package vv.restwebservice.modells;
 
 import javax.persistence.Embeddable;
 
-//@Entity
-//@Table(name="Address-Table")
+
 @Embeddable
 public class Address {
-
     private String street;
     private String zip;
     private String location;

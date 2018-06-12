@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
-//@Version privat int Version
 
 @Service
 public class ContractService implements IContractService {
@@ -31,6 +30,10 @@ public class ContractService implements IContractService {
         contractDAO.findAll().forEach(contracts::add);
         return  contracts;
     }
+    /**
+     * This method looks up if any other database entry has the same
+     * not generated field/variable value as the @param Object
+     * @return Return false if the Object doesn't exist in the h2 database  **/
     public boolean contractExists(Contract contract){
         AtomicBoolean returnFlag = new AtomicBoolean(false);
         getAllContracts().forEach(contractList ->
@@ -50,7 +53,6 @@ public class ContractService implements IContractService {
             contractDAO.save(contract);
             return true;
         }
-
     }
     @Override
     @Transactional
@@ -60,7 +62,7 @@ public class ContractService implements IContractService {
         System.out.println(updatedContract);
         updatedContract.setForeignKey(contract.getForeignKey());
         updatedContract.setCustomer(contract.getCustomer());
-//        updatedContract.setCustomer(new CustomerService().getCustomerById(contract.getForeignKey()));
+        //        updatedContract.setCustomer(new CustomerService().getCustomerById(contract.getForeignKey()));
         updatedContract.setId(contract.getContractId());
         updatedContract.setPrice(contract.getPrice());
         updatedContract.setSurname(contract.getSurname());
@@ -82,9 +84,9 @@ public class ContractService implements IContractService {
         }
     }
     public Contract getContractByEquals(Contract contract){
-//        List<Contract> contracts = new ArrayList<>();
-//        contractDAO.findAll().forEach(contracts::add);
-//        return  contracts;
+        //        List<Contract> contracts = new ArrayList<>();
+        //        contractDAO.findAll().forEach(contracts::add);
+        //        return  contracts;
         AtomicReference<Contract> c = new AtomicReference<>(new Contract());
         contractDAO.findAll().forEach(contract1 -> {if(contract.equals(contract1)){
             c.set(contract1);
@@ -92,7 +94,7 @@ public class ContractService implements IContractService {
         return c.get();
     }
     private Contract getContractByName(Contract contract) {
-//        if (!contractExists(contract)) return
+        //        if (!contractExists(contract)) return
         AtomicReference<Contract> c = null;
         contractDAO.findAll().forEach(contract1 -> {
             if (contract.equals(contract1)) {
@@ -101,6 +103,7 @@ public class ContractService implements IContractService {
         });
         return c.get();
     }
+    /**@return return true if a entry with the @param ID in the h2 database exist**/
     public boolean existByID(long id){
         System.out.println(id);
         boolean ret = contractDAO.existsById(id);

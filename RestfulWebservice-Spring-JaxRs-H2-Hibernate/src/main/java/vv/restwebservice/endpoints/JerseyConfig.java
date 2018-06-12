@@ -5,11 +5,8 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.ApplicationPath;
 
-//import vv.restwebservice.endpoints.CustomerEndpoint;
-
 @Component
 @ApplicationPath("/spring-app")
-
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         register(ContractEndpoint.class);

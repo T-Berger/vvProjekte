@@ -1,11 +1,9 @@
 package vv.restwebservice.services;
 
 
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import vv.restwebservice.dao.interfacesDAO.ICustomerDAO;
-import vv.restwebservice.modells.Contract;
 import vv.restwebservice.modells.Customer;
 import vv.restwebservice.services.interfacesService.ICustomerService;
 
@@ -52,10 +50,13 @@ public class CustomerService implements ICustomerService {
         }
     }
     @Override
+    /**
+     * Update all fields form the saved Object with the new fields of the new Object**/
     public void updateCustomer(Customer customer) {
         Customer updatedCustomer = getCustomerById(customer.getid());
         updatedCustomer.setAddress(customer.getAddress());
         updatedCustomer.setContracts(customer.getContracts());
+        // MAP contracts to Customer
         updatedCustomer.getContracts().forEach(contract -> {
             contract.setCustomer(customer);
             contract.setForeignKey(customer.getid());
@@ -71,7 +72,10 @@ public class CustomerService implements ICustomerService {
     public void deleteCustomer(long id) {
         customerDAO.delete(customerDAO.findById(id).get());
     }
-
+    /**
+     * This method looks up if any other database entry has the same
+     * not generated field/variable value as the @param Object
+     * @return Return false if the Object doesn't exist in the h2 database  **/
     public boolean customerExists(Customer customer){
         AtomicBoolean returnFlag = new AtomicBoolean(false);
         getAllCustomers().forEach(customerList ->
@@ -80,9 +84,10 @@ public class CustomerService implements ICustomerService {
                 returnFlag.set(true);
             }
         });
-//        System.out.println("RETURN FLAG" + true);
+        //        System.out.println("RETURN FLAG" + true);
         return returnFlag.get();
     }
+    /**@return return true if a entry with the @param ID in the h2 database exist**/
     public boolean existByID (long id){
         return customerDAO.existsById(id);
     }

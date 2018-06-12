@@ -19,9 +19,16 @@ import java.util.List;
 //@Controller
 @RequestMapping("customer")
 @RestController
-@Api(tags = "students")
+@Api
+/**
+ * Dises gemappte Klassen existiert nur wegen SWAGGER-
+ * Da Swagger in der neuste Config mit Spring und Jersey
+ * zu konfiguieren ging.
+ *
+ * Die Swagger Endpoint Doku findet man auf
+ *  http://localhost:8080/swagger-ui.html
+ * **/
 public class CustomerController {
-
     @Autowired
     private CustomerService customerService;
     @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -63,6 +70,4 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
-
-
 }

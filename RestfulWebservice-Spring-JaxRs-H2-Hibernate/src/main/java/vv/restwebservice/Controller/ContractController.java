@@ -21,6 +21,14 @@ import java.util.List;
 @RequestMapping("contract")
 @RestController
 @Api
+/**
+ * Dises gemappte Klassen existiert nur wegen SWAGGER-
+ * Da Swagger in der neuste Config mit Spring und Jersey
+ * zu konfiguieren ging.
+ *
+ * Die Swagger Endpoint Doku findet man auf
+ *  http://localhost:8080/swagger-ui.html
+ * **/
 public class ContractController {
     @Autowired
     private IContractService contractService;

@@ -35,6 +35,7 @@ public class JerseyTestClientTest {
     Customer mordred = new Customer("Mordred", "Mordred", df.parse("2000.00.00"),"");
     Address address1 = new Address("foo","1","bar");
     List<Contract> contracts1 = new ArrayList<>();
+
     public JerseyTestClientTest() throws ParseException {
         contracts.add(auto);
         contracts.add(brandschutz);
@@ -53,20 +54,19 @@ public class JerseyTestClientTest {
 
     @Test
     public void integration() throws ParseException {
-//        JerseyTestClientTest test = new JerseyTestClientTest();
-//        assertNotEquals("", outContent.toString());
+        //        JerseyTestClientTest test = new JerseyTestClientTest();
+        //        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
-        System.out.println("qq");
         jerseyClient.getContractById(1);
         Customer up = jerseyClient.getCustomerById(2);
-//        assertNotEquals("", outContent.toString());
+        //        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
         up.setid(2);
         up.setSurname("Paladin");
         jerseyClient.updateCustomer(up);
         String s = jerseyClient.getCustomerById(2).getSurname();
         assertEquals("Paladin",s);
-//        assertNotEquals("", outContent.toString());
+        //        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());//
 
         jerseyClient.updateContract(new Contract("123","123",2,mordred,5));
@@ -74,13 +74,13 @@ public class JerseyTestClientTest {
         Contract c = jerseyClient.getContractById(5);
         System.out.println(c.toString());
         assertEquals(c.getPrice(),2.0,0.0);
-//        assertNotEquals("", outContent.toString());
+        //        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
 
         jerseyClient.deleteCustomer(1);
         jerseyClient.deleteContract(3);
 
-//        assertNotEquals("", outContent.toString());
+        //        assertNotEquals("", outContent.toString());
         assertEquals("", errContent.toString());
     }
 

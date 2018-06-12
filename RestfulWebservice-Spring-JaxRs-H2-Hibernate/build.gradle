@@ -39,15 +39,11 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.session:spring-session-core')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//    runtime('com.h2database:h2')
+    //    runtime('com.h2database:h2')
     compile('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
     testCompile('org.springframework.security:spring-security-test')
-//    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-//    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
-//    // https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api
-//    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
     // https://mvnrepository.com/artifact/javax.ejb/ejb-api
     compile group: 'javax.ejb', name: 'ejb-api', version: '3.0-alpha-1'
     // https://mvnrepository.com/artifact/org.jboss.jsfunit/jboss-jsfunit

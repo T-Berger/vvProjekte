@@ -85,11 +85,10 @@ public class ContractEndpoint {
     @DELETE
     @Path("/full/{contract}")
     @Transactional
-//    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public  Response deleteContractByValues(@PathParam("contract") String c) throws IOException {
         Contract help = new ObjectMapper().readValue(c, Contract.class);
         System.out.println(help.toString());
         return Response.noContent().build();
     }
-
 }

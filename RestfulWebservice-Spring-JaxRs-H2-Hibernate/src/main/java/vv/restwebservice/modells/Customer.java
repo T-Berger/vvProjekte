@@ -17,9 +17,9 @@ import java.util.Objects;
 @XmlRootElement
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer implements Serializable {
-//    private static final long serialVersionUID = 1L;
+    //    private static final long serialVersionUID = 1L;
     @Id
-//    @GeneratedValue
+    //    @GeneratedValue
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "CUSTOMER_ID")
@@ -54,9 +54,9 @@ public class Customer implements Serializable {
         this.contracts = contracts;
     }
 
-//    public static long getSerialVersionUID() {
-//        return serialVersionUID;
-//    }
+    //    public static long getSerialVersionUID() {
+    //        return serialVersionUID;
+    //    }
 
     @Override
     public boolean equals(Object o) {

@@ -33,7 +33,6 @@ public class CustomerEndpoint {
         List<Customer> list = customerService.getAllCustomers();
         return Response.ok(list).build();
     }
-
     @ApiOperation("Updates an existing student.")
     @GET
     @Path("/{id}")
@@ -55,7 +54,6 @@ public class CustomerEndpoint {
             logger.info("Customer already existing.");
             return Response.status(Response.Status.CONFLICT).build();
         }
-
         return Response.created(URI.create("/spring-app/customer/"+ customer.getid())).build();
     }
     @PUT

@@ -7,10 +7,6 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
-//import vv.restwebservice.dao.ContractDAO;
-//import vv.restwebservice.dao.CustomerDAO;
-
-
 @SpringBootApplication
 public class RestWebserviceApplication {
     /*
@@ -34,12 +30,15 @@ public class RestWebserviceApplication {
     }
     */
     @Bean
+    /** Starts a new 2nd webserver
+     * here used for the http Connection **/
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
         tomcat.addAdditionalTomcatConnectors(createStandardConnector());
         return tomcat;
     }
-
+    /**Connector for the 2nd Server Connection.
+     * here used for the http Connection **/
     private Connector createStandardConnector() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setPort(8080);
