@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vv.restwebservice.modells.Customer;
-import vv.restwebservice.services.ContractService;
-import vv.restwebservice.services.CustomerService;
 import vv.restwebservice.services.interfacesService.ICustomerService;
 
 import javax.ejb.Stateless;
