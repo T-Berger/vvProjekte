@@ -15,8 +15,16 @@ public class TelematicUnit {
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send() {
-        String message = "Hello World!";
-        this.template.convertAndSend(dr.getName(), message);
+        String message =  new VehicleMessage().toString();
+//        this.template.convertAndSend(unfiltered_DrivingQueue.getName(), message);
+        this.template.convertAndSend(message);
+        System.out.println(" [x] Sent '" + message + "'");
+    }
+//    @Scheduled(fixedRateString = "${fixedRate.in.milliseconds}")
+    public void alarm() {
+        String message = new VehicleMessage().toString();
+//        this.template.convertAndSend(unfiltered_DrivingQueue.getName(), message);
+        this.template.convertAndSend(message);
         System.out.println(" [x] Sent '" + message + "'");
     }
 }

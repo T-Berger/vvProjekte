@@ -8,7 +8,7 @@ public class VehicleMessage {
     int time;
     String gpsCoordniats;
 
-
+    VehicleMessage(){}
 
     public String randomGPS (){
         double minLat = -90.00;
@@ -19,5 +19,15 @@ public class VehicleMessage {
         double longitude = minLon + (double)(Math.random() * ((maxLon - minLon) + 1));
         DecimalFormat df = new DecimalFormat("#.#####");
         return ("latitude:longitude --> " + df.format(latitude) + "," + df.format(longitude));
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleMessage{" +
+                "id=" + id +
+                ", range=" + range +
+                ", time=" + time +
+                ", gpsCoordniats='" + gpsCoordniats + '\'' +
+                '}';
     }
 }
