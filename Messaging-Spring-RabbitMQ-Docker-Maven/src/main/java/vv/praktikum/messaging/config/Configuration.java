@@ -5,10 +5,13 @@ import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
+import vv.praktikum.messaging.receiver.AlarmReceiver;
 import vv.praktikum.messaging.receiver.InputFilter;
 import vv.praktikum.messaging.receiver.OutputFilter;
+import vv.praktikum.messaging.sender.Alarm;
 import vv.praktikum.messaging.sender.TelematicUnit;
 import vv.praktikum.messaging.topicDistributer.Logbook;
+import vv.praktikum.messaging.topicListener.DataWarehouse;
 
 //@Profile({"receiver", "sender", "topicDistributer", "config"})
 @org.springframework.context.annotation.Configuration
@@ -16,6 +19,7 @@ public class Configuration {
     public static final String EXCHANGE_NAME = "appExchange";
     public static final String QUEUE_UNFILTERED_DRIVINGQUEUE = "unfilteredDrivingQueue";
     public static final String QUEUE_FILTERED_DRIVINGDATA = "appSpecificQueue";
+    public static final String ALARM_QUEUE = "alarmQueue";
 
 
 
@@ -74,6 +78,8 @@ public class Configuration {
         return new Logbook();
     }
     @Bean
+    public DataWarehouse dataWarehouse() { return new DataWarehouse();}
+    @Bean
     public Binding alarmPriorityBinding() {
         return BindingBuilder.bind(filteredDrivingData())
                 .to(appExchange())
@@ -85,7 +91,30 @@ public class Configuration {
         return BindingBuilder.bind(filteredDrivingData())
                 .to(appExchange())
                 .with("normal");
+
     }
+
+
+    /***
+     * Alarm Queue
+     * ********************/
+    @Bean
+    public Queue AlarmQueue() {
+        return new Queue(ALARM_QUEUE);
+    }
+
+    @Bean
+    public Alarm alarm_sender() {
+        return new Alarm();
+    }
+
+    @Bean
+    public AlarmReceiver alarmReceiver() {
+        return new AlarmReceiver();
+    }
+
+
+
     //    @Profile("filter")
 
     //    public TopicExchange topic() {
@@ -101,7 +130,6 @@ public class Configuration {
     /////////////////////////////////////////
 
 //    @Profile("receiver")
-
 
 
 //    }

@@ -29,6 +29,7 @@ public class Alarm {
         System.out.println("ALARM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        this.template.convertAndSend(unfiltered_DrivingQueue.getName(), message);
         this.alarm.convertAndSend(appExchange.getName(),"alarm",message);
+        this.alarm.convertAndSend(Configuration.ALARM_QUEUE,message);
         System.out.println(" [x] Sent '" + message + "'");
     }
 }

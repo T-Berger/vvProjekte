@@ -77,17 +77,19 @@ public class Logbook {
             logEntrys.put(id, in);
         System.out.println(logEntrys);
 //        }
-
-        synchronized (writer) {
-            try {
-                writer.write(in + "\n");
-                writer.write(id);
-                wait(10000);
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        /**
+         * Funktioniert
+         * runiert aber den ram*/
+//        synchronized (writer) {
+//            try {
+//                writer.write(in + "\n");
+//                writer.write(id);
+//                wait(10000);
+//                writer.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
     }
 

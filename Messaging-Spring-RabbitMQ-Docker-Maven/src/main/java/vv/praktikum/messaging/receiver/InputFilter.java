@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 import vv.praktikum.messaging.config.Configuration;
 
-
+@Deprecated
 @Service
 //@RabbitListener(queues = Configuration.QUEUE_UNFILTERED_DRIVINGQUEUE)
 public class InputFilter {
