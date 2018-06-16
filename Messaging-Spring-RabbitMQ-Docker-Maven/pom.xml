@@ -33,12 +33,33 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>2.0.3.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/gradle.plugin.cn.bestwu.gradle/propdeps-plugin &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>gradle.plugin.cn.bestwu.gradle</groupId>-->
+            <!--<artifactId>propdeps-plugin</artifactId>-->
+            <!--<version>0.0.10</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
     <build>
@@ -49,6 +70,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 
 </project>

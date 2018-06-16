@@ -3,16 +3,24 @@ package vv.praktikum.messaging.receiver;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+import vv.praktikum.messaging.config.Configuration;
 
+@Service
 public class OutputFilter {
     @Autowired
     private RabbitTemplate template;
 
-    @Autowired
-    private TopicExchange topic;
+//    @Autowired
+//    private Queue filteredDrivingData;
 
-    OutputFilter(String message){
+//    @Autowired
+//    private TopicExchange topic;
+
+    @Autowired
+    private TopicExchange appExchange;
+
+    public OutputFilter(){
 //        this.message = message;
     }
 
@@ -25,15 +33,14 @@ public class OutputFilter {
     private final String[] keys = {"alarm.message",
             "normal.message"};
 
-    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+//    @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send(String message) {
-        StringBuilder builder = new StringBuilder("Hello to ");
         if (++this.index == keys.length) {
             this.index = 0;
         }
         String key = keys[this.index];
-;
-        template.convertAndSend(topic.getName(), key, message);
-        System.out.println(" [x] Sent '" + message + "'");
+//        template.convertAndSend(topic.getName(), key, message);
+        template.convertAndSend(appExchange.getName(), key, message);
+        System.out.println("            [x] SentFiltered '" + message + "'");
     }
 }
