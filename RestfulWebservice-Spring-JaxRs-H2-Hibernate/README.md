@@ -1,4 +1,4 @@
-# Restful Webservice with Spring-Server / Jersey Client / H2 / Hibernate / Swagger 
+﻿# Restful Webservice with Spring-Server / Jersey Client / H2 / Hibernate / Swagger 
 
 Aufgabe von Verteilte Verarbeitung 2 abgabe 12.06.2018
 
@@ -68,8 +68,6 @@ docker images
 docker run -p 8080:8080 -t "/image/"
 
 ### Revision
-
-Die Arbeit mit Spring war schwierig. Viele wichtige Funktionen/Abläufe/Requirments sind in Spring versteckt, somit nicht einsichtig. Das führt zu komische Fehlermeldung fehlkonfiguration etc. . Spring Online Beispiele sind meisten unbrauchbar  und man hat Teilweise größere Funktionunterschiede zwischen verschiedene Spring Versionen, das macht dann die meisten Beispiele unbrauchbar. Hätte mich öfter in Spring Doku einabreiten müssen, aber wegen den kleinen Projektunfang wollte ich mir diese Mühe nicht machen. War fatal.  
 
 Die Entscheidung  Jersey / JAX-RS / JAX-RS Annotaions in Spring Server zu verwenden war auch fatal. Da diese Tools einfach schlecht in Spring integiert sind. Z.B. Swaggers Springfox nimmt trotz unzählicher verschiedener Konfigurations- Einstellungen nicht die Jersey Endpoints. 
 Atomarität von JUNIT Test des Proxys wurden durch Datenbankzugriff und Serverzugriff erschwert.
